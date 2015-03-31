@@ -16,6 +16,8 @@ class CreateProducts extends Migration {
 			$table->increments('id');
 			$table->string('description', 350);
 			$table->integer('category_id')->references('id')->on('productcategory');
+			$table->string('filename');
+			$table->string('filename_dir');
 			$table->timestamps();
 		});
 	}

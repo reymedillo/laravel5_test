@@ -13,7 +13,7 @@
 
 Route::get('/', 'HomeController@index');
 Route::get('home', 'HomeController@index');
-Route::get('/products', function() { return view('products.index'); });
+Route::get('/shop', ['as' => 'shopIndex', 'uses' => 'ShopController@index']);
 
 Route::get('/messages', ['as'=>'msgviewall','uses' => 'MessageController@viewall']);
 Route::post('/users/login',['as' => 'loginuser', 'uses' => 'UsersController@login']);
@@ -24,6 +24,11 @@ Route::group(array('prefix' => 'api'), function() {
 	Route::resource('messages', 'MessageController', 
 		array('except' => array('create')
 	));
+});
+Route::group(['prefix' => 'api'], function() {
+	Route::resource('products', 'ProductController', [
+		'except' => ['create']
+	]);
 });
 
 Route::controllers([
