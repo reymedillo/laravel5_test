@@ -13,7 +13,7 @@
 
 Route::get('/', 'HomeController@index');
 Route::get('home', 'HomeController@index');
-Route::get('/shop', ['as' => 'shopIndex', 'uses' => 'ShopController@index']);
+Route::get('/shop', ['as' => 'shopIndex', 'uses' => 'OrderController@index']);
 
 Route::get('/messages', ['as'=>'msgviewall','uses' => 'MessageController@viewall']);
 Route::post('/users/login',['as' => 'loginuser', 'uses' => 'UsersController@login']);

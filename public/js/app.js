@@ -1,4 +1,11 @@
-var messageApp = angular.module('messageApp', ['msgCtrl', 'messageService','angularMoment','ngRoute'], function($interpolateProvider){
+var messageApp = angular.module('messageApp', [
+	'msgCtrl', 
+	'shopCtrl',
+	'messageService', 
+	'shopService',
+	'angularMoment',
+	'ngRoute'
+	], function($interpolateProvider){
     $interpolateProvider.startSymbol('{[');
     $interpolateProvider.endSymbol(']}');
 });
