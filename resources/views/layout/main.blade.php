@@ -14,8 +14,10 @@
     <script src="/js/node_modules/angular/angular.min.js"></script>
     <script src="/js/node_modules/angular-route.js"></script> 
     <script src="/js/controllers/msgCtrl.js"></script>
+    <script src="/js/controllers/shopCtrl.js"></script>
     <script src="/js/services/commentService.js"></script>
     <script src="/js/services/messageService.js"></script>
+    <script src="/js/services/shopService.js"></script>
     <script src="/js/app.js"></script>
     <script src="/js/node_modules/pusher/pusher.min.js"></script>
     <script src="/js/node_modules/moment.min.js"></script>

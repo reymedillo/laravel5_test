@@ -152,7 +152,7 @@
                   </div>
               </section>
               <div class="row product-list">
-                  <div class="col-md-4">
+                  <div class="col-md-4" ng-repeat="product in products">
                       <section class="panel">
                           <div class="pro-img-box">
                               <img src="img/product-list/pro-1.jpg" alt=""/>
@@ -161,7 +161,7 @@
                               </a>
                           </div>
 
-                          <div class="panel-body text-center" ng-repeat="product in test">
+                          <div class="panel-body text-center">
                               <h4>
                                   <a href="#" class="pro-title">
                                       {[product.description]}
