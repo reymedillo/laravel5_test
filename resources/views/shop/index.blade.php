@@ -160,7 +160,6 @@
                                   <i class="fa fa-shopping-cart"></i>
                               </a>
                           </div>
-
                           <div class="panel-body text-center">
                               <h4>
                                   <a href="#" class="pro-title">
