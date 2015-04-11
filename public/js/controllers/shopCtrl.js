@@ -84,6 +84,12 @@ angular.module('shopCtrl', [])
         console.log('not exists');
     }
     else {
+    for(var i=0;i<$scope.orders.length;i++){
+        if($scope.orders[i].id===data.id){
+            $scope.orders.push({'id':data.id,'description':data.description,'qty':$scope.orders[i].qty+1});   
+            $scope.orders.splice(i,1);     
+        }
+    }
         console.log('exist');
     }
 
