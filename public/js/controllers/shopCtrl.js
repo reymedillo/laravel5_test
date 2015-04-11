@@ -44,11 +44,50 @@ angular.module('shopCtrl', [])
 
             });
     };
+    $scope.qty = 1;
+
+    $scope.orders = [];
+    // $scope.$watch('qty', function (newValue, oldValue) {
+    // // if (newValue > 3) {
+    // //     $scope.qty = oldValue;
+    //     if(String(newValue).indexOf(',') != -1) {
+    //         $scope.qty = String(newValue).replace(',', '.');
+    //     }
+    //     else 
+    //     {
+    //         var index_dot,
+    //             arr = String(newValue).split("");
+    //         // if (arr.length === 0) return;
+    //         // if (arr.length === 1 && (arr[0] == '-' || arr[0] === '.')) return;
+    //         // if (arr.length === 2 && newValue === '-.') return;
+    //         // if (isNaN(newValue) || ((index_dot = String(newValue).indexOf('.')) != -1 && String(newValue).length - index_dot > 3 )) {  //for allowing decimals
+    //         if (isNaN(newValue) || newValue > 3) {
+    //             $scope.qty = oldValue;           
+    //         }
+    //     }
+    // // }
+    // });
 
     $scope.select = function(data) {
-        $scope.itemSelected = data;
-    };
+    // $scope.orders.push({'id':data.id,'description':data.description,'qty':1});
+    //     angular.forEach($scope.orders, function(item) {
+    //         console.log($scope.orders.indexOf(1));
+    //     });
+    var addToArray=true;
+    for(var i=0;i<$scope.orders.length;i++){
+        if($scope.orders[i].id===data.id){
+            addToArray=false;
+        }
+    }
+    if(addToArray){
+        $scope.orders.push({'id':data.id,'description':data.description,'qty':1});
+        console.log('not exists');
+    }
+    else {
+        console.log('exist');
+    }
 
+    };
     // function to handle viewing a message by sender
     $scope.showOrder = function(id) {
         Shop.show(id)

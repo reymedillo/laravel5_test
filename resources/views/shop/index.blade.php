@@ -179,11 +179,12 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
+                        <tr ng-repeat="order in orders">
                           <td>1</td>
-                          <td>{[itemSelected.description]}</td>
-                          <td>{[itemSelected.price]}</td>
-                          <td><div class="col-lg-7"><input class="form-control round-input"></input></div></td>
+                          <td>{[order.description]}</td>
+                          <td><!-- {[itemSelected.price]} --></td>
+                          <td><!-- <div class="col-lg-7"><input class="form-control" ng-model="qty"></div> -->{[order.qty]}</td>
+                          <td><!-- {[itemSelected.price*qty]} --></td>
                         </tr>
                       </tbody>
                     </table>
@@ -199,4 +200,5 @@
     </div>
   </section>
 </section>
+
 @endsection
