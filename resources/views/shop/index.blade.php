@@ -148,9 +148,9 @@
             <section class="panel">
               <div class="pro-img-box">
                 <img src="img/product-list/pro-1.jpg" alt=""/>
-                <a href="#myModal" data-toggle="modal" class="adtocart" ng-click="select(product)">
+                <a href="#myModal" data-toggle="modal" class="adtocart" ng-click="submitCart(product)">
                   <i class="fa fa-shopping-cart"></i>
-                </a>
+                </a>      
               </div>
               <div class="panel-body text-center">
                 <h4>
@@ -158,13 +158,14 @@
                     {[product.description]}
                   </a>
                 </h4>
-                <p class="price">$300.00</p>
+                <p class="price">{[product.price]}</p>
               </div>
-              <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
+              <!-- modal -->
+              <div aria-hidden="true" aria-labelledby="myModalLabel" id="myModal" role="dialog" tabindex="-1" class="modal fade">
+                <form action="{{ url('/') }}" method="post">
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-body">
-                    <form role="form">
                     <header class="panel-heading">
                       Add items to your cart
                     </header>
@@ -179,20 +180,32 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr ng-repeat="order in orders">
-                          <td>1</td>
-                          <td>{[order.description]}</td>
-                          <td><!-- {[itemSelected.price]} --></td>
-                          <td><!-- <div class="col-lg-7"><input class="form-control" ng-model="qty"></div> -->{[order.qty]}</td>
-                          <td><!-- {[itemSelected.price*qty]} --></td>
+                        <tr ng-repeat="cart in cartData track by $index">
+                          <td>{[$index]}</td>
+                          <td>{[cart.description]}</td>
+                          <td>{[cart.price]}</td>
+                          <td>
+                            <select ng-options="list.id as list.value for list in listQty" ng-change="updateQty(cart)" ng-model="cart.qty">
+                            </select>
+                          </td>
+                          <td>{[cart.total]}</td>
                         </tr>
                       </tbody>
                     </table>
-                    </form>
+                    </div>
+                    <div class="modal-footer">
+                      <div class="col-lg-5 pull-right">
+                        {[netTotal()]}
+                        <br>
+                        <input type="hidden" name="_token" value="{{csrf_token()}}">
+                        <input type="submit" class="form-control btn btn-info" value="Checkout">
+                      </div>
                     </div>
                   </div>
                 </div>
+              </form>
               </div>
+              <!-- end modal -->
             </section>
           </div> 
         </div>
@@ -200,5 +213,4 @@
     </div>
   </section>
 </section>
-
 @endsection

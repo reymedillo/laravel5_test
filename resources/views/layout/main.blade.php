@@ -69,11 +69,26 @@
     <!--common script for all pages-->
 
     <script src="/js/common-scripts.js"></script>
-
     <script>
-    $(document).ready(function() {
+     // $(document).on("click", ".adtocart", function() {
 
-    });
+     //    var total = 0;
+
+     //    // $("#total").each(function() {
+     //    //     if (!isNaN(this.value) && this.value.length != 0) {
+     //    //         total += parseFloat(this.value);
+     //    //         console.log(total);
+     //    //     }
+     //    // });
+     //    // $('#sumtotal').val(total);
+
+     //    // var add = 0;
+     //    // $(".input-default").each(function() {
+     //    //     add += Number($(this).val());
+     //    // });
+     //    // console.log(add);
+     //    // $("#para").text("Sum of all textboxes is : " + add);
+     // });
     </script>
 </body>
 </html>
