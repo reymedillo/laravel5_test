@@ -144,7 +144,7 @@
           </div>
         </section>
         <div class="row product-list">
-          <div class="col-md-4" ng-repeat="product in products">
+          <div class="col-md-4" ng-repeat="product in products track by $index">
             <section class="panel">
               <div class="pro-img-box">
                 <img src="img/product-list/pro-1.jpg" alt=""/>
@@ -155,14 +155,14 @@
               <div class="panel-body text-center">
                 <h4>
                   <a href="#" class="pro-title">
-                    {[product.description]}
+                    {[product.description]} {[product.id]}
                   </a>
                 </h4>
                 <p class="price">{[product.price]}</p>
               </div>
               <!-- modal -->
               <div aria-hidden="true" aria-labelledby="myModalLabel" id="myModal" role="dialog" tabindex="-1" class="modal fade">
-                <form action="{{ url('/') }}" method="post">
+                <form action="{{ url('/shop/checkout') }}" method="post">
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-body">
@@ -182,13 +182,13 @@
                       <tbody>
                         <tr ng-repeat="cart in cartData track by $index">
                           <td>{[$index]}</td>
-                          <td>{[cart.description]}</td>
-                          <td>{[cart.price]}</td>
+                          <td>{[cart.description]}<input type="hidden" name="cartDesc" value="{[cart.code]}"></td>
+                          <td>{[cart.price]}<input type="hidden" name="cartPrc" value="{[cart.price]}"></td>
                           <td>
-                            <select ng-options="list.id as list.value for list in listQty" ng-change="updateQty(cart)" ng-model="cart.qty">
+                            <select name="cartQty" ng-options="list.id as list.value for list in listQty" ng-change="updateQty(cart)" ng-model="cart.qty">
                             </select>
                           </td>
-                          <td>{[cart.total]}</td>
+                          <td>{[cart.total]}<input type="hidden" name="cartTotal" value="{[cart.total]}"></td>
                         </tr>
                       </tbody>
                     </table>

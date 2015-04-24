@@ -45,13 +45,16 @@ class CartController extends Controller {
 	 */
 	public function store(Request $request)
 	{
-		$cart = Cart::create(array(
-			'description' => $request->input('description'),
-			'qty' => 1,
-			'price' => $request->input('price'),
-			'total' => $request->input('price'),
-			'cookie' => Session::get('cart_session')
-		));
+		$cart = new Cart;
+		$cart->code = $request->input('code');
+		$cart->description = $request->input('description');
+		$cart->qty = $request->input('qty');
+		$cart->price = $request->input('price');
+		$cart->total = $request->input('total');
+		$cart->cookie = Session::get('cart_session');
+
+		$cart->save();
+
 		return response()->json(array('success' => true));
 	}
 
