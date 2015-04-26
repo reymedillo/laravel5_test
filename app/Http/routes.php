@@ -13,13 +13,13 @@
 Session::put('cart_session', str_random(20));
 Route::get('/', 'HomeController@index');
 Route::get('home', 'HomeController@index');
-Route::get('/shop', ['as' => 'shopIndex', 'uses' => 'OrderController@index']);
+Route::get('/shop', ['as' => 'shopIndex', 'uses' => 'OrderController@home']);
 
 Route::get('/messages', ['as'=>'msgviewall','uses' => 'MessageController@viewall']);
 Route::post('/users/login',['as' => 'loginuser', 'uses' => 'UsersController@login']);
 Route::get('api/messages/notifications', ['uses' => 'MessageController@notify']);
 
-#post routes
+# post routes
 Route::post('/shop/checkout', array('as'=>'shopCheckout', 'uses'=>'OrderController@checkout'));
 
 # for api's
@@ -33,6 +33,9 @@ Route::group(['prefix' => 'api'], function() {
 	Route::resource('cart', 'CartController', array(
 		'except' => array('create')
 	));
+	// Route::resource('order', 'OrderController', array(
+	// 	'except' => array('create')
+	// ));
 });
 
 Route::controllers([

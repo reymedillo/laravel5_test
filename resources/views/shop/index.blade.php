@@ -181,21 +181,22 @@
                       </thead>
                       <tbody>
                         <tr ng-repeat="cart in cartData track by $index">
-                          <td>{[$index]}</td>
-                          <td>{[cart.description]}<input type="hidden" name="cartDesc" value="{[cart.code]}"></td>
-                          <td>{[cart.price]}<input type="hidden" name="cartPrc" value="{[cart.price]}"></td>
+                          <td>{[$index]}<input type="hidden" name="cartId[]" value="{[cart.id]}"></td>
+                          <td>{[cart.description]}<input type="hidden" name="cartDesc[]" value="{[cart.code]}"></td>
+                          <td>{[cart.price]}<input type="hidden" name="cartPrc[]" value="{[cart.price]}"></td>
                           <td>
-                            <select name="cartQty" ng-options="list.id as list.value for list in listQty" ng-change="updateQty(cart)" ng-model="cart.qty">
+                            <select ng-options="list.id as list.value for list in listQty" ng-change="updateQty(cart)" ng-model="cart.qty">
                             </select>
+                            <input type="hidden"name="cartQty[]" value="{[cart.qty]}">
                           </td>
-                          <td>{[cart.total]}<input type="hidden" name="cartTotal" value="{[cart.total]}"></td>
+                          <td>{[cart.total]}<input type="hidden" name="cartTotal[]" value="{[cart.total]}"></td>
                         </tr>
                       </tbody>
                     </table>
                     </div>
                     <div class="modal-footer">
                       <div class="col-lg-5 pull-right">
-                        {[netTotal()]}
+                        {[netTotal()]}<input type="hidden" name="netTotal" value="{[netTotal()]}">
                         <br>
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <input type="submit" class="form-control btn btn-info" value="Checkout">
